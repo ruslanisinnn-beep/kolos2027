@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Новый Год 2027 | Колос</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        choco: '#1A1412',
+                        amber: '#E56B24',
+                        silver: '#F0F4F8',
+                        gold: '#C8A97E',
+                        darker: '#0A0807',
+                    },
+                    fontFamily: {
+                        heading: ['"Playfair Display"', 'serif'],
+                        body: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { 
+            background-color: #0A0807; 
+            color: #F0F4F8; 
+            font-family: 'Montserrat', sans-serif; 
+            overflow-x: hidden; 
+        }
+        
+        .section-bg {
+            background-color: transparent;
+            background-size: contain; 
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        /* Выделенный фон для главного экрана с усилением цвета козы */
+        .hero-bg-img {
+            background-image: url('Gemini_Generated_Image_gekm96gekm96gekm.jpg');
+            filter: brightness(1.2) contrast(1.15) saturate(1.4);
+        }
+
+        /* Фоны для остальных блоков */
+        .program-bg { background-image: url('bg-program.jpg'); }
+        .menu-bg { background-image: url('bg-menu.jpg'); }
+        .tariffs-bg { background-image: url('bg-tariffs.jpg'); }
+        .contact-bg { background-image: url('bg-contact.jpg'); }
+
+        .overlay-gradient {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(10, 8, 7, 0.4), rgba(10, 8, 7, 0.95));
+            z-index: 1;
+        }
+
+        /* --- НОВЫЙ ОГНЕННЫЙ СТИЛЬ --- */
+
+        /* Огненный градиент для навигации */
+        .nav-fire {
+            background: linear-gradient(180deg, #FFFFFF 0%, #FFD700 40%, #FF4500 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            filter: drop-shadow(0 0 5px rgba(255, 69, 0, 0.8));
+            transition: all 0.3s ease;
+        }
+        .nav-fire:hover {
+            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 1));
+            transform: scale(1.05);
+        }
+
+        /* Огненный светящийся текст для заголовков */
+        .fire-text {
+            color: #fff;
+            text-shadow: 
+                0 0 5px #fff,
+                0 0 15px #FFD700,
+                0 0 25px #FF8C00,
+                0 0 40px #FF4500;
+        }
+
+        /* Главные залитые кнопки */
+        .fire-btn {
+            background: linear-gradient(135deg, #FF8C00, #FF4500);
+            color: white;
+            text-shadow: 0 0 5px rgba(255,255,255,0.5);
+            box-shadow: 0 0 15px rgba(255, 69, 0, 0.6), inset 0 0 10px rgba(255, 215, 0, 0.4);
+            border: 1px solid #FFD700;
+            transition: all 0.3s ease;
+        }
+        .fire-btn:hover {
+            box-shadow: 0 0 25px rgba(255, 69, 0, 0.9), inset 0 0 15px rgba(255, 215, 0, 0.6);
+            transform: scale(1.05);
+        }
+
+        /* Контурные кнопки */
+        .fire-btn-outline {
+            background: rgba(26, 20, 18, 0.6);
+            color: #FFD700;
+            border: 1px solid #FF8C00;
+            box-shadow: 0 0 15px rgba(255, 140, 0, 0.4), inset 0 0 5px rgba(255, 140, 0, 0.2);
+            text-shadow: 0 0 8px rgba(255, 140, 0, 0.6);
+            transition: all 0.3s ease;
+        }
+        .fire-btn-outline:hover {
+            background: rgba(255, 69, 0, 0.15);
+            color: #fff;
+            border-color: #FFD700;
+            box-shadow: 0 0 25px rgba(255, 140, 0, 0.8), inset 0 0 10px rgba(255, 140, 0, 0.4);
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+            transform: scale(1.05);
+        }
+
+        /* --- АНИМАЦИЯ ОГНЕННЫХ РОГОВ --- */
+        .horns-glow {
+            top: 20%;
+            right: 15%;
+            width: 50vw;
+            height: 50vw;
+            max-width: 600px;
+            max-height: 600px;
+            background: radial-gradient(circle, rgba(255, 150, 0, 0.4) 0%, rgba(255, 69, 0, 0.15) 35%, transparent 65%);
+            mix-blend-mode: screen;
+            animation: fire-pulse 3s infinite alternate ease-in-out;
+            transform-origin: center;
+        }
+
+        @keyframes fire-pulse {
+            0% { transform: scale(0.9) translate(2%, 2%); opacity: 0.6; filter: hue-rotate(0deg); }
+            50% { transform: scale(1.05) translate(-1%, -2%); opacity: 0.8; filter: hue-rotate(-5deg); }
+            100% { transform: scale(1.15) translate(-2%, 1%); opacity: 1; filter: hue-rotate(5deg); }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-amber selection:text-choco font-light relative" translate="no">
+
+    <!-- Шапка (Меню) -->
+    <header class="fixed w-full top-0 bg-darker/90 backdrop-blur-md z-50 border-b border-[#FF8C00]/20">
+        <div class="max-w-7xl mx-auto px-4 py-2 flex justify-between items-center">
+            
+            <!-- ОГНЕННЫЙ ЛОГОТИП -->
+            <a href="#" class="inline-block">
+                <img src="image_e49975.jpg" alt="Санаторий Колос" class="h-16 md:h-20 object-contain" style="mix-blend-mode: screen;">
+            </a>
+
+            <!-- ОГНЕННАЯ НАВИГАЦИЯ -->
+            <nav class="hidden md:flex space-x-10 text-sm">
+                <a href="#program" class="nav-fire">Программа</a>
+                <a href="#menu" class="nav-fire">Меню</a>
+                <a href="#tariffs" class="nav-fire">Тарифы</a>
+            </nav>
+            <a href="#contact" class="fire-btn px-6 py-3 rounded-sm font-medium tracking-wide text-sm">Получить консультацию</a>
+        </div>
+    </header>
+
+    <!-- Главный экран -->
+    <section class="relative min-h-screen flex items-center justify-start pb-24 px-4 pt-32 overflow-hidden">
+        
+        <!-- ИЗОЛИРОВАННЫЙ ФОН ДЛЯ УСИЛЕНИЯ ЯРКОСТИ -->
+        <div class="absolute inset-0 w-full h-full section-bg hero-bg-img z-0"></div>
+        
+        <!-- АНИМИРОВАННОЕ СВЕЧЕНИЕ НА РОГАХ КОЗЫ -->
+        <div class="horns-glow absolute z-0 pointer-events-none"></div>
+
+        <div class="overlay-gradient"></div>
+
+        <div class="max-w-7xl mx-auto relative z-20 w-full">
+            <div class="w-full md:w-1/2 space-y-8 text-center md:text-left mt-10 md:mt-0">
+                <h1 class="font-heading text-7xl md:text-8xl lg:text-[9rem] fire-text font-bold mb-2 leading-none">2027</h1>
+                <h2 class="text-4xl md:text-5xl lg:text-6xl font-heading text-silver font-normal mb-6 italic tracking-wide drop-shadow-lg">Огненная магия<br>в Зимнем лесу</h2>
+                <p class="text-lg md:text-xl text-silver/90 max-w-xl mx-auto md:mx-0 mb-10 leading-relaxed font-light drop-shadow-md">
+                    Встреча Нового года в санатории «Колос». Фирменный ужин, мистическая шоу-программа и отдых на природе вдали от городского шума.
+                </p>
+                <a href="#tariffs" class="fire-btn-outline inline-block px-10 py-4 rounded-sm font-normal text-lg tracking-wide backdrop-blur-md">
+                    Выберите вариант размещения
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Программа -->
+    <section id="program" class="section-bg program-bg relative py-32 px-4 border-b border-gold/10 overflow-hidden">
+        <div class="overlay-gradient"></div>
+
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center mb-20">
+                <h2 class="font-heading text-4xl md:text-6xl mb-6 tracking-wide fire-text">Тайна новогодней ночи</h2>
+                <p class="text-silver/80 max-w-2xl mx-auto text-lg leading-relaxed font-light">Забудьте о шумных клубах и пустяковых конкурсах. Мы создали атмосферу, где элегантность сочетается с природными стихиями.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-16">
+                <div class="space-y-6">
+                    <div class="h-14 w-14 text-[#FFD700] border border-[#FF8C00] rounded-full flex items-center justify-center text-xl font-heading font-bold shadow-[0_0_15px_rgba(255,140,0,0.4)] bg-darker/60 backdrop-blur-sm">1</div>
+                    <h3 class="font-heading text-3xl text-silver tracking-wide">Шоу огненных барменов</h3>
+                    <p class="text-silver/60 leading-relaxed font-light">Фирменные согревающие коктейли, виртуозная подача и мастерское владение огнем.</p>
+                </div>
+                <div class="space-y-6">
+                    <div class="h-14 w-14 text-[#FFD700] border border-[#FF8C00] rounded-full flex items-center justify-center text-xl font-heading font-bold shadow-[0_0_15px_rgba(255,140,0,0.4)] bg-darker/60 backdrop-blur-sm">2</div>
+                    <h3 class="font-heading text-3xl text-silver tracking-wide">Живая музыка и вокал</h3>
+                    <p class="text-silver/60 leading-relaxed font-light">Лаунж-зона, джазовые интерпретации новогодних хитов и изысканная музыка.</p>
+                </div>
+                <div class="space-y-6">
+                    <div class="h-14 w-14 text-[#FFD700] border border-[#FF8C00] rounded-full flex items-center justify-center text-xl font-heading font-bold shadow-[0_0_15px_rgba(255,140,0,0.4)] bg-darker/60 backdrop-blur-sm">3</div>
+                    <h3 class="font-heading text-3xl text-silver tracking-wide">Загадка леса</h3>
+                    <p class="text-silver/60 leading-relaxed font-light">Ненавязчивая, захватывающая программа без лишнего взаимодействия.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Меню -->
+    <section id="menu" class="section-bg menu-bg relative py-32 px-4 overflow-hidden">
+        <div class="overlay-gradient"></div>
+        
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16 relative z-10">
+            <div class="w-full md:w-1/2 p-2 bg-gradient-to-br from-[#FF8C00]/30 to-darker rounded-sm shadow-[0_0_40px_rgba(255,140,0,0.2)] relative">
+                <div class="absolute -inset-2 border border-[#FF8C00]/20 rounded-sm"></div>
+                <img src="food.jpg.jpg" alt="Блюдо от шефа" class="w-full h-auto object-cover rounded-sm hover:scale-105 transition-transform duration-1000 relative z-10">
+            </div>
+            
+            <div class="w-full md:w-1/2 space-y-8">
+                <h2 class="font-heading text-4xl md:text-6xl tracking-wide fire-text">Вкус, соответствующий моменту</h2>
+                <p class="text-silver/80 text-lg leading-relaxed font-light">
+                    Наш шеф-повар разработал эксклюзивное меню, в котором классические новогодние традиции сочетаются с сибирскими вкусами и эффектной подачей.
+                </p>
+                <div class="border-l border-[#FF8C00] pl-8 my-10 relative">
+                    <div class="absolute -left-[1px] top-0 h-1/2 w-[2px] bg-[#FFD700] shadow-[0_0_10px_#FF8C00]"></div>
+                    <p class="text-2xl font-heading text-silver tracking-wide mb-2">Медальоны из фермерской говядины</p>
+                    <p class="text-silver/50 font-light">с соусом из лесных ягод и фламбе.</p>
+                </div>
+                <button class="fire-btn-outline px-8 py-3 rounded-sm tracking-wide text-sm backdrop-blur-sm">
+                    Просмотреть полное меню
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Тарифы -->
+    <section id="tariffs" class="section-bg tariffs-bg relative py-32 px-4 overflow-hidden">
+        <div class="overlay-gradient"></div>
+
+        <div class="max-w-7xl mx-auto relative z-10">
+            <h2 class="font-heading text-4xl md:text-6xl text-center mb-20 tracking-wide fire-text">Выберите свой сценарий отдыха</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8 items-center">
+                <div class="bg-darker/80 backdrop-blur-md border border-gold/20 p-10 rounded-sm text-center space-y-8 hover:border-[#FF8C00]/50 transition-colors shadow-xl relative overflow-hidden">
+                    <h3 class="font-heading text-3xl text-silver tracking-wide">Праздничный ужин</h3>
+                    <div class="w-12 h-px bg-gold/30 mx-auto"></div>
+                    <ul class="text-silver/60 space-y-4 font-light text-sm">
+                        <li>Приветственный прием и банкет</li>
+                        <li>Шоу-программа</li>
+                    </ul>
+                    <div class="text-2xl text-gold font-normal mt-8">от 12 000 ₽ <span class="text-xs font-light text-silver/40 uppercase tracking-widest">/ человек</span></div>
+                    <button class="fire-btn-outline w-full py-3 rounded-sm tracking-wide text-sm">Обсудить бронирование</button>
+                </div>
+
+                <div class="bg-darker/95 backdrop-blur-xl border border-[#FF8C00] p-12 rounded-sm text-center space-y-8 transform md:-translate-y-4 shadow-[0_0_50px_rgba(255,140,0,0.2)] relative">
+                    <div class="text-[#FFD700] text-xs font-bold tracking-[0.2em] uppercase mb-4 text-shadow-[0_0_8px_rgba(255,140,0,0.8)]">Бестселлер</div>
+                    <h3 class="font-heading text-4xl text-silver tracking-wide">Зимняя сказка</h3>
+                    <div class="w-12 h-px bg-[#FF8C00]/50 mx-auto"></div>
+                    <ul class="text-silver/70 space-y-4 font-light">
+                        <li>Программа банкета и шоу</li>
+                        <li>Номер комфорт (2 ночи)</li>
+                        <li>Бранч на открытом воздухе 1 января</li>
+                    </ul>
+                    <div class="text-3xl text-[#FFD700] font-normal mt-8">от 35 000 ₽ <span class="text-xs font-light text-silver/40 uppercase tracking-widest">/ 2 чел</span></div>
+                    <button class="fire-btn w-full py-4 rounded-sm font-medium tracking-wide text-sm">Получить консультацию</button>
+                </div>
+
+                <div class="bg-darker/80 backdrop-blur-md border border-gold/20 p-10 rounded-sm text-center space-y-8 hover:border-[#FF8C00]/50 transition-colors shadow-xl">
+                    <h3 class="font-heading text-3xl text-silver tracking-wide">Лесная резиденция</h3>
+                    <div class="w-12 h-px bg-gold/30 mx-auto"></div>
+                    <ul class="text-silver/60 space-y-4 font-light text-sm">
+                        <li>Места премиум-класса на банкете</li>
+                        <li>Отдельный коттедж (2 ночи)</li>
+                        <li>Неограниченный доступ в спа-салон</li>
+                    </ul>
+                    <div class="text-2xl text-gold font-normal mt-8">от 65 000 ₽ <span class="text-xs font-light text-silver/40 uppercase tracking-widest">/ 2 чел</span></div>
+                    <button class="fire-btn-outline w-full py-3 rounded-sm tracking-wide text-sm">Забронировать коттедж</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section id="contact" class="section-bg contact-bg relative py-24 px-4 border-t border-gold/10 overflow-hidden">
+        <div class="overlay-gradient"></div>
+        
+        <div class="max-w-3xl mx-auto text-center space-y-10 relative z-10">
+            <h2 class="font-heading text-4xl md:text-5xl tracking-wide fire-text">Хотите ознакомиться с подробностями?</h2>
+            <p class="text-silver/70 font-light text-lg">Оставьте свой номер телефона, и мы вышлем вам подробное расписание новогодней вечеринки, винную карту и схему рассадки.</p>
+            <form class="flex flex-col md:flex-row gap-4 justify-center max-w-xl mx-auto mt-8">
+                <input type="tel" placeholder="Ваш WhatsApp" class="px-6 py-4 bg-darker/80 border border-[#FF8C00]/40 rounded-sm text-silver focus:outline-none focus:border-[#FFD700] focus:shadow-[0_0_15px_rgba(255,140,0,0.5)] w-full md:w-2/3 font-light backdrop-blur-sm shadow-inner transition-all">
+                <button type="submit" class="fire-btn px-8 py-4 rounded-sm font-medium tracking-wide text-sm md:w-1/3">Получить программу</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Подвал -->
+    <footer class="py-10 text-center bg-darker/95 backdrop-blur-lg border-t border-gold/10 text-silver/40 text-xs font-light tracking-widest uppercase relative z-10">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
+            
+            <!-- ОГНЕННЫЙ ЛОГОТИП (Малый) -->
+            <img src="image_e49975.jpg" alt="Санаторий Колос" class="h-10 object-contain" style="mix-blend-mode: screen;">
+            
+            <p>В 50 км от города, в самом сердце березового леса.</p>
+            <a href="#" class="hover:text-silver transition border-b border-transparent hover:border-silver pb-1">Политика конфиденциальности</a>
+        </div>
+    </footer>
+
+</body>
+</html>
