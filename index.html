@@ -37,7 +37,6 @@
         
         .section-bg {
             background-color: transparent;
-            background-size: contain; 
             background-repeat: no-repeat;
             background-position: center;
         }
@@ -51,22 +50,21 @@
             background-position: 80% 30%; 
         }
 
-        /* Для компьютеров возвращаем классическое отображение */
+        /* Для компьютеров: теперь фон заполняет ВСЮ ширину экрана без полей */
         @media (min-width: 768px) {
             .hero-bg-img {
-                background-size: contain;
+                background-size: cover; 
                 background-position: center;
             }
         }
 
         /* Фоны для остальных блоков */
-        .program-bg { background-image: url('bg-program.jpg'); }
-        .menu-bg { background-image: url('bg-menu.jpg'); }
-        .tariffs-bg { background-image: url('bg-tariffs.jpg'); }
-        .contact-bg { background-image: url('bg-contact.jpg'); }
+        .program-bg { background-image: url('bg-program.jpg'); background-size: cover; }
+        .menu-bg { background-image: url('bg-menu.jpg'); background-size: cover; }
+        .tariffs-bg { background-image: url('bg-tariffs.jpg'); background-size: cover; }
+        .contact-bg { background-image: url('bg-contact.jpg'); background-size: cover; }
 
         /* Умный градиент (Решает проблему черных квадратов) */
-        /* Для телефона: прозрачно сверху (видно козу), темно снизу (видно текст) */
         .overlay-gradient {
             position: absolute;
             inset: 0;
@@ -74,7 +72,6 @@
             z-index: 1;
         }
         
-        /* Для компьютера: темно слева (текст), прозрачно справа (коза) */
         @media (min-width: 768px) {
             .overlay-gradient {
                 background: linear-gradient(to right, rgba(10, 8, 7, 0.98) 0%, rgba(10, 8, 7, 0.7) 45%, rgba(10, 8, 7, 0) 100%);
@@ -150,7 +147,6 @@
             transform-origin: center;
         }
         
-        /* Смещаем свечение на телефоне, чтобы оно совпадало с новой позицией козы */
         @media (max-width: 767px) {
             .horns-glow {
                 top: 25%;
@@ -212,7 +208,6 @@
     </header>
 
     <!-- Главный экран -->
-    <!-- flex-col для телефона прижимает текст вниз, flex-row для ПК ставит слева -->
     <section class="relative min-h-[100svh] flex flex-col md:flex-row items-center justify-end md:justify-start pb-12 md:pb-24 px-4 pt-32 overflow-hidden">
         
         <div class="absolute inset-0 w-full h-full section-bg hero-bg-img z-0"></div>
