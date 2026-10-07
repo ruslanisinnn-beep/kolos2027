@@ -46,9 +46,9 @@
         .hero-bg-img {
             background-image: url('Gemini_Generated_Image_gekm96gekm96gekm.jpg');
             filter: brightness(1.2) contrast(1.15) saturate(1.4);
-            /* Для мобильных телефонов (по умолчанию): заполняем экран и смещаем фокус вправо на козу */
             background-size: cover;
-            background-position: 80% center;
+            /* На мобильных смещаем камеру вправо (на козу) и чуть вверх */
+            background-position: 80% 30%; 
         }
 
         /* Для компьютеров возвращаем классическое отображение */
@@ -65,11 +65,20 @@
         .tariffs-bg { background-image: url('bg-tariffs.jpg'); }
         .contact-bg { background-image: url('bg-contact.jpg'); }
 
+        /* Умный градиент (Решает проблему черных квадратов) */
+        /* Для телефона: прозрачно сверху (видно козу), темно снизу (видно текст) */
         .overlay-gradient {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to bottom, rgba(10, 8, 7, 0.4), rgba(10, 8, 7, 0.95));
+            background: linear-gradient(to bottom, rgba(10, 8, 7, 0) 0%, rgba(10, 8, 7, 0.5) 45%, rgba(10, 8, 7, 0.98) 95%);
             z-index: 1;
+        }
+        
+        /* Для компьютера: темно слева (текст), прозрачно справа (коза) */
+        @media (min-width: 768px) {
+            .overlay-gradient {
+                background: linear-gradient(to right, rgba(10, 8, 7, 0.98) 0%, rgba(10, 8, 7, 0.7) 45%, rgba(10, 8, 7, 0) 100%);
+            }
         }
 
         /* --- ОГНЕННЫЙ СТИЛЬ --- */
@@ -144,7 +153,7 @@
         /* Смещаем свечение на телефоне, чтобы оно совпадало с новой позицией козы */
         @media (max-width: 767px) {
             .horns-glow {
-                top: 40%;
+                top: 25%;
                 right: 0%;
                 width: 80vw;
                 height: 80vw;
@@ -160,16 +169,39 @@
 </head>
 <body class="antialiased selection:bg-amber selection:text-choco font-light relative" translate="no">
 
+    <!-- БИБЛИОТЕКА ОГНЕННЫХ ИКОНОК (SVG) -->
+    <svg style="width: 0; height: 0; position: absolute;" aria-hidden="true">
+        <defs>
+            <linearGradient id="fire-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FFD700" />
+                <stop offset="100%" stop-color="#FF4500" />
+            </linearGradient>
+            <!-- 1: Новогодний шар -->
+            <g id="icon-bauble">
+                <path d="M12 2 A1 1 0 0 0 11 3 V4 H9 A1 1 0 0 0 8 5 V7 A1 1 0 0 0 9 8 H9.18 A9 9 0 1 0 14.82 8 H15 A1 1 0 0 0 16 7 V5 A1 1 0 0 0 15 4 H13 V3 A1 1 0 0 0 12 2 Z" fill="url(#fire-grad)"/>
+                <circle cx="12" cy="15" r="4" fill="#0A0807" opacity="0.8"/>
+                <circle cx="12" cy="15" r="1.5" fill="#FFD700"/>
+            </g>
+            <!-- 2: Рождественский колокольчик -->
+            <g id="icon-bell">
+                <path d="M12 2 C9 2 7 4 7 7 V13 L4 16 V17 H20 V16 L17 13 V7 C17 4 15 2 12 2 Z" fill="url(#fire-grad)"/>
+                <circle cx="12" cy="20" r="2.5" fill="url(#fire-grad)"/>
+            </g>
+            <!-- 3: Звезда -->
+            <g id="icon-star">
+                <path d="M12 1 L14.5 8.5 L22 9 L16.5 13.5 L18 21 L12 17 L6 21 L7.5 13.5 L2 9 L9.5 8.5 Z" fill="url(#fire-grad)"/>
+            </g>
+        </defs>
+    </svg>
+
     <!-- Шапка (Меню) -->
     <header class="fixed w-full top-0 bg-darker/90 backdrop-blur-md z-50 border-b border-[#FF8C00]/20">
         <div class="max-w-7xl mx-auto px-4 py-2 flex justify-between items-center">
             
-            <!-- ОГНЕННЫЙ ЛОГОТИП -->
             <a href="#" class="inline-block">
                 <img src="image_e49975.jpg" alt="Санаторий Колос" class="h-12 md:h-20 object-contain" style="mix-blend-mode: screen;">
             </a>
 
-            <!-- ОГНЕННАЯ НАВИГАЦИЯ -->
             <nav class="hidden md:flex space-x-10 text-sm">
                 <a href="#program" class="nav-fire">Программа</a>
                 <a href="#menu" class="nav-fire">Меню</a>
@@ -180,18 +212,15 @@
     </header>
 
     <!-- Главный экран -->
-    <section class="relative min-h-screen flex items-center justify-start pb-24 px-4 pt-32 overflow-hidden">
+    <!-- flex-col для телефона прижимает текст вниз, flex-row для ПК ставит слева -->
+    <section class="relative min-h-[100svh] flex flex-col md:flex-row items-center justify-end md:justify-start pb-12 md:pb-24 px-4 pt-32 overflow-hidden">
         
-        <!-- ИЗОЛИРОВАННЫЙ ФОН ДЛЯ УСИЛЕНИЯ ЯРКОСТИ -->
         <div class="absolute inset-0 w-full h-full section-bg hero-bg-img z-0"></div>
-        
-        <!-- АНИМИРОВАННОЕ СВЕЧЕНИЕ НА РОГАХ КОЗЫ -->
         <div class="horns-glow absolute z-0 pointer-events-none"></div>
-
         <div class="overlay-gradient"></div>
 
-        <div class="max-w-7xl mx-auto relative z-20 w-full">
-            <div class="w-full md:w-1/2 space-y-6 md:space-y-8 text-center md:text-left mt-10 md:mt-0 bg-darker/40 md:bg-transparent p-6 md:p-0 rounded-lg backdrop-blur-sm md:backdrop-blur-none">
+        <div class="max-w-7xl mx-auto relative z-20 w-full flex">
+            <div class="w-full md:w-1/2 space-y-6 md:space-y-8 text-center md:text-left z-20">
                 <h1 class="font-heading text-6xl md:text-8xl lg:text-[9rem] fire-text font-bold mb-2 leading-none">2027</h1>
                 <h2 class="text-3xl md:text-5xl lg:text-6xl font-heading text-silver font-normal mb-6 italic tracking-wide drop-shadow-lg">Огненная магия<br>в Зимнем лесу</h2>
                 <p class="text-base md:text-xl text-silver/90 max-w-xl mx-auto md:mx-0 mb-10 leading-relaxed font-light drop-shadow-md">
@@ -206,7 +235,7 @@
 
     <!-- Программа -->
     <section id="program" class="section-bg program-bg relative py-20 md:py-32 px-4 border-b border-gold/10 overflow-hidden">
-        <div class="overlay-gradient"></div>
+        <div class="overlay-gradient" style="background: linear-gradient(to bottom, rgba(10, 8, 7, 0.7), rgba(10, 8, 7, 0.95));"></div>
 
         <div class="max-w-7xl mx-auto relative z-10">
             <div class="text-center mb-16 md:mb-20">
@@ -215,18 +244,27 @@
             </div>
             
             <div class="grid md:grid-cols-3 gap-12 md:gap-16">
+                <!-- Пункт 1: Шар -->
                 <div class="space-y-4 md:space-y-6 text-center md:text-left">
-                    <div class="h-14 w-14 mx-auto md:mx-0 text-[#FFD700] border border-[#FF8C00] rounded-full flex items-center justify-center text-xl font-heading font-bold shadow-[0_0_15px_rgba(255,140,0,0.4)] bg-darker/60 backdrop-blur-sm">1</div>
+                    <div class="h-16 w-16 mx-auto md:mx-0 flex items-center justify-center filter drop-shadow-[0_0_15px_rgba(255,140,0,0.6)] hover:scale-110 transition-transform">
+                        <svg viewBox="0 0 24 24" class="w-14 h-14"><use href="#icon-bauble"></use></svg>
+                    </div>
                     <h3 class="font-heading text-2xl md:text-3xl text-silver tracking-wide">Шоу огненных барменов</h3>
                     <p class="text-silver/60 leading-relaxed font-light text-sm md:text-base">Фирменные согревающие коктейли, виртуозная подача и мастерское владение огнем.</p>
                 </div>
+                <!-- Пункт 2: Колокольчик -->
                 <div class="space-y-4 md:space-y-6 text-center md:text-left">
-                    <div class="h-14 w-14 mx-auto md:mx-0 text-[#FFD700] border border-[#FF8C00] rounded-full flex items-center justify-center text-xl font-heading font-bold shadow-[0_0_15px_rgba(255,140,0,0.4)] bg-darker/60 backdrop-blur-sm">2</div>
+                    <div class="h-16 w-16 mx-auto md:mx-0 flex items-center justify-center filter drop-shadow-[0_0_15px_rgba(255,140,0,0.6)] hover:scale-110 transition-transform">
+                        <svg viewBox="0 0 24 24" class="w-12 h-12"><use href="#icon-bell"></use></svg>
+                    </div>
                     <h3 class="font-heading text-2xl md:text-3xl text-silver tracking-wide">Живая музыка и вокал</h3>
                     <p class="text-silver/60 leading-relaxed font-light text-sm md:text-base">Лаунж-зона, джазовые интерпретации новогодних хитов и изысканная музыка.</p>
                 </div>
+                <!-- Пункт 3: Звезда -->
                 <div class="space-y-4 md:space-y-6 text-center md:text-left">
-                    <div class="h-14 w-14 mx-auto md:mx-0 text-[#FFD700] border border-[#FF8C00] rounded-full flex items-center justify-center text-xl font-heading font-bold shadow-[0_0_15px_rgba(255,140,0,0.4)] bg-darker/60 backdrop-blur-sm">3</div>
+                    <div class="h-16 w-16 mx-auto md:mx-0 flex items-center justify-center filter drop-shadow-[0_0_15px_rgba(255,140,0,0.6)] hover:scale-110 transition-transform">
+                        <svg viewBox="0 0 24 24" class="w-14 h-14"><use href="#icon-star"></use></svg>
+                    </div>
                     <h3 class="font-heading text-2xl md:text-3xl text-silver tracking-wide">Загадка леса</h3>
                     <p class="text-silver/60 leading-relaxed font-light text-sm md:text-base">Ненавязчивая, захватывающая программа без лишнего взаимодействия.</p>
                 </div>
@@ -236,7 +274,7 @@
 
     <!-- Меню -->
     <section id="menu" class="section-bg menu-bg relative py-20 md:py-32 px-4 overflow-hidden">
-        <div class="overlay-gradient"></div>
+        <div class="overlay-gradient" style="background: linear-gradient(to bottom, rgba(10, 8, 7, 0.7), rgba(10, 8, 7, 0.95));"></div>
         
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-10 md:gap-16 relative z-10">
             <div class="w-full md:w-1/2 p-2 bg-gradient-to-br from-[#FF8C00]/30 to-darker rounded-sm shadow-[0_0_40px_rgba(255,140,0,0.2)] relative">
@@ -263,7 +301,7 @@
 
     <!-- Тарифы -->
     <section id="tariffs" class="section-bg tariffs-bg relative py-20 md:py-32 px-4 overflow-hidden">
-        <div class="overlay-gradient"></div>
+        <div class="overlay-gradient" style="background: linear-gradient(to bottom, rgba(10, 8, 7, 0.7), rgba(10, 8, 7, 0.95));"></div>
 
         <div class="max-w-7xl mx-auto relative z-10">
             <h2 class="font-heading text-3xl md:text-6xl text-center mb-16 md:mb-20 tracking-wide fire-text">Выберите свой сценарий</h2>
@@ -310,7 +348,7 @@
 
     <!-- Контакты -->
     <section id="contact" class="section-bg contact-bg relative py-20 md:py-24 px-4 border-t border-gold/10 overflow-hidden">
-        <div class="overlay-gradient"></div>
+        <div class="overlay-gradient" style="background: linear-gradient(to bottom, rgba(10, 8, 7, 0.7), rgba(10, 8, 7, 0.95));"></div>
         
         <div class="max-w-3xl mx-auto text-center space-y-8 md:space-y-10 relative z-10">
             <h2 class="font-heading text-3xl md:text-5xl tracking-wide fire-text">Хотите узнать подробности?</h2>
