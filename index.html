@@ -1,368 +1,198 @@
 <!DOCTYPE html>
-<html lang="ru" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Новый Год 2027 | Колос</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        choco: '#1A1412',
-                        amber: '#E56B24',
-                        silver: '#F0F4F8',
-                        gold: '#C8A97E',
-                        darker: '#0A0807',
-                    },
-                    fontFamily: {
-                        heading: ['"Playfair Display"', 'serif'],
-                        body: ['Montserrat', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
+    <title>New Year 2027 Landing Page</title>
     <style>
-        body { 
-            background-color: #0A0807; 
-            color: #F0F4F8; 
-            font-family: 'Montserrat', sans-serif; 
-            overflow-x: hidden; 
+        body {
+            margin: 0;
+            font-family: 'Georgia', serif;
+            background-color: #1a110a;
+            color: #ffffff;
         }
-        
-        .section-bg {
-            background-color: transparent;
-            background-repeat: no-repeat;
+        .section {
+            min-height: 100vh;
+            padding: 4rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-size: cover;
             background-position: center;
         }
-
-        /* Умный фон для главного экрана */
-        .hero-bg-img {
-            background-image: url('Gemini_Generated_Image_gekm96gekm96gekm.jpg');
-            filter: brightness(1.2) contrast(1.15) saturate(1.4);
-            background-size: cover;
-            /* На мобильных смещаем камеру вправо (на козу) и чуть вверх */
-            background-position: 80% 30%; 
+        .header {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
         }
-
-        /* Для компьютеров: теперь фон заполняет ВСЮ ширину экрана без полей */
-        @media (min-width: 768px) {
-            .hero-bg-img {
-                background-size: cover; 
-                background-position: center;
-            }
+        .nav-group {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
         }
-
-        /* Фоны для остальных блоков */
-        .program-bg { background-image: url('bg-program.jpg'); background-size: cover; }
-        .menu-bg { background-image: url('bg-menu.jpg'); background-size: cover; }
-        .tariffs-bg { background-image: url('bg-tariffs.jpg'); background-size: cover; }
-        .contact-bg { background-image: url('bg-contact.jpg'); background-size: cover; }
-
-        /* Умный градиент (Решает проблему черных квадратов) */
-        .overlay-gradient {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to bottom, rgba(10, 8, 7, 0) 0%, rgba(10, 8, 7, 0.5) 45%, rgba(10, 8, 7, 0.98) 95%);
-            z-index: 1;
+        .btn-outline {
+            padding: 12px 24px;
+            border: 2px solid #d4af37;
+            border-radius: 30px;
+            background: transparent;
+            color: #ffffff;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
-        
-        @media (min-width: 768px) {
-            .overlay-gradient {
-                background: linear-gradient(to right, rgba(10, 8, 7, 0.98) 0%, rgba(10, 8, 7, 0.7) 45%, rgba(10, 8, 7, 0) 100%);
-            }
+        .btn-primary {
+            padding: 15px 35px;
+            background: linear-gradient(90deg, #b8860b, #ffae42, #b8860b);
+            border: none;
+            border-radius: 30px;
+            color: #ffffff;
+            font-size: 1.1rem;
+            cursor: pointer;
+            text-transform: uppercase;
+            box-shadow: 0 0 15px rgba(255, 174, 66, 0.5);
         }
-
-        /* --- ОГНЕННЫЙ СТИЛЬ --- */
-        .nav-fire {
-            background: linear-gradient(180deg, #FFFFFF 0%, #FFD700 40%, #FF4500 100%);
+        .title-group {
+            text-align: center;
+            margin: auto 0;
+        }
+        .title-group h1 {
+            font-size: 12rem;
+            margin: 0;
+            background: -webkit-linear-gradient(#ffae42, #ff4500);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            filter: drop-shadow(0 0 5px rgba(255, 69, 0, 0.8));
-            transition: all 0.3s ease;
         }
-        .nav-fire:hover {
-            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 1));
-            transform: scale(1.05);
+        .cards-grid {
+            display: flex;
+            gap: 3rem;
+            margin-top: 4rem;
+            max-width: 1000px;
         }
-
-        .fire-text {
-            color: #fff;
-            text-shadow: 
-                0 0 5px #fff,
-                0 0 15px #FFD700,
-                0 0 25px #FF8C00,
-                0 0 40px #FF4500;
+        .glass-card {
+            background: rgba(20, 15, 10, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            border-radius: 200px 200px 20px 20px;
+            padding: 3rem 2rem;
+            width: 350px;
+            text-align: center;
         }
-
-        .fire-btn {
-            background: linear-gradient(135deg, #FF8C00, #FF4500);
-            color: white;
-            text-shadow: 0 0 5px rgba(255,255,255,0.5);
-            box-shadow: 0 0 15px rgba(255, 69, 0, 0.6), inset 0 0 10px rgba(255, 215, 0, 0.4);
-            border: 1px solid #FFD700;
-            transition: all 0.3s ease;
+        .video-container {
+            display: flex;
+            gap: 4rem;
+            max-width: 1200px;
+            align-items: center;
+            margin-top: 2rem;
         }
-        .fire-btn:hover {
-            box-shadow: 0 0 25px rgba(255, 69, 0, 0.9), inset 0 0 15px rgba(255, 215, 0, 0.6);
-            transform: scale(1.05);
+        .video-player {
+            width: 600px;
+            height: 350px;
+            border: 2px solid #d4af37;
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
-
-        .fire-btn-outline {
-            background: rgba(26, 20, 18, 0.6);
-            color: #FFD700;
-            border: 1px solid #FF8C00;
-            box-shadow: 0 0 15px rgba(255, 140, 0, 0.4), inset 0 0 5px rgba(255, 140, 0, 0.2);
-            text-shadow: 0 0 8px rgba(255, 140, 0, 0.6);
-            transition: all 0.3s ease;
-        }
-        .fire-btn-outline:hover {
-            background: rgba(255, 69, 0, 0.15);
-            color: #fff;
-            border-color: #FFD700;
-            box-shadow: 0 0 25px rgba(255, 140, 0, 0.8), inset 0 0 10px rgba(255, 140, 0, 0.4);
-            text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
-            transform: scale(1.05);
-        }
-
-        /* --- АНИМАЦИЯ ОГНЕННЫХ РОГОВ --- */
-        .horns-glow {
-            top: 20%;
-            right: 15%;
-            width: 50vw;
-            height: 50vw;
-            max-width: 600px;
-            max-height: 600px;
-            background: radial-gradient(circle, rgba(255, 150, 0, 0.4) 0%, rgba(255, 69, 0, 0.15) 35%, transparent 65%);
-            mix-blend-mode: screen;
-            animation: fire-pulse 3s infinite alternate ease-in-out;
-            transform-origin: center;
+        .footer {
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 3rem 0;
+            background: #0d0805;
         }
         
-        @media (max-width: 767px) {
-            .horns-glow {
-                top: 25%;
-                right: 0%;
-                width: 80vw;
-                height: 80vw;
-            }
+        #screen-1 {
+            background-image: url('1.jpeg');
         }
-
-        @keyframes fire-pulse {
-            0% { transform: scale(0.9) translate(2%, 2%); opacity: 0.6; filter: hue-rotate(0deg); }
-            50% { transform: scale(1.05) translate(-1%, -2%); opacity: 0.8; filter: hue-rotate(-5deg); }
-            100% { transform: scale(1.15) translate(-2%, 1%); opacity: 1; filter: hue-rotate(5deg); }
+        #screen-2 {
+            background-image: url('2.jpeg');
+        }
+        #screen-3 {
+            background-image: url('3.jpeg');
+        }
+        #screen-4 {
+            background-image: url('4.jpeg');
         }
     </style>
 </head>
-<body class="antialiased selection:bg-amber selection:text-choco font-light relative" translate="no">
+<body>
 
-    <!-- БИБЛИОТЕКА ОГНЕННЫХ ИКОНОК (SVG) -->
-    <svg style="width: 0; height: 0; position: absolute;" aria-hidden="true">
-        <defs>
-            <linearGradient id="fire-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#FFD700" />
-                <stop offset="100%" stop-color="#FF4500" />
-            </linearGradient>
-            <!-- 1: Новогодний шар -->
-            <g id="icon-bauble">
-                <path d="M12 2 A1 1 0 0 0 11 3 V4 H9 A1 1 0 0 0 8 5 V7 A1 1 0 0 0 9 8 H9.18 A9 9 0 1 0 14.82 8 H15 A1 1 0 0 0 16 7 V5 A1 1 0 0 0 15 4 H13 V3 A1 1 0 0 0 12 2 Z" fill="url(#fire-grad)"/>
-                <circle cx="12" cy="15" r="4" fill="#0A0807" opacity="0.8"/>
-                <circle cx="12" cy="15" r="1.5" fill="#FFD700"/>
-            </g>
-            <!-- 2: Рождественский колокольчик -->
-            <g id="icon-bell">
-                <path d="M12 2 C9 2 7 4 7 7 V13 L4 16 V17 H20 V16 L17 13 V7 C17 4 15 2 12 2 Z" fill="url(#fire-grad)"/>
-                <circle cx="12" cy="20" r="2.5" fill="url(#fire-grad)"/>
-            </g>
-            <!-- 3: Звезда -->
-            <g id="icon-star">
-                <path d="M12 1 L14.5 8.5 L22 9 L16.5 13.5 L18 21 L12 17 L6 21 L7.5 13.5 L2 9 L9.5 8.5 Z" fill="url(#fire-grad)"/>
-            </g>
-        </defs>
-    </svg>
-
-    <!-- Шапка (Меню) -->
-    <header class="fixed w-full top-0 bg-darker/90 backdrop-blur-md z-50 border-b border-[#FF8C00]/20">
-        <div class="max-w-7xl mx-auto px-4 py-2 flex justify-between items-center">
-            
-            <a href="#" class="inline-block">
-                <img src="image_e49975.jpg" alt="Санаторий Колос" class="h-12 md:h-20 object-contain" style="mix-blend-mode: screen;">
-            </a>
-
-            <nav class="hidden md:flex space-x-10 text-sm">
-                <a href="#program" class="nav-fire">Программа</a>
-                <a href="#menu" class="nav-fire">Меню</a>
-                <a href="#tariffs" class="nav-fire">Тарифы</a>
-            </nav>
-            <a href="#contact" class="fire-btn hidden md:inline-block px-6 py-3 rounded-sm font-medium tracking-wide text-sm">Получить консультацию</a>
+    <section class="section hero" id="screen-1">
+        <header class="header">
+            <div class="nav-group">
+                <span>Menu</span>
+                <button class="btn-outline">Book Now</button>
+            </div>
+            <div class="logo">Sanatorium Kolos</div>
+        </header>
+        <div class="title-group">
+            <h1>2027</h1>
+            <h2>New Year</h2>
+            <h3>Fire and Horns</h3>
+            <p>An unforgettable holiday</p>
+            <button class="btn-primary">Get Consultation</button>
         </div>
-    </header>
+    </section>
 
-    <!-- Главный экран -->
-    <section class="relative min-h-[100svh] flex flex-col md:flex-row items-center justify-end md:justify-start pb-12 md:pb-24 px-4 pt-32 overflow-hidden">
-        
-        <div class="absolute inset-0 w-full h-full section-bg hero-bg-img z-0"></div>
-        <div class="horns-glow absolute z-0 pointer-events-none"></div>
-        <div class="overlay-gradient"></div>
-
-        <div class="max-w-7xl mx-auto relative z-20 w-full flex">
-            <div class="w-full md:w-1/2 space-y-6 md:space-y-8 text-center md:text-left z-20">
-                <h1 class="font-heading text-6xl md:text-8xl lg:text-[9rem] fire-text font-bold mb-2 leading-none">2027</h1>
-                <h2 class="text-3xl md:text-5xl lg:text-6xl font-heading text-silver font-normal mb-6 italic tracking-wide drop-shadow-lg">Огненная магия<br>в Зимнем лесу</h2>
-                <p class="text-base md:text-xl text-silver/90 max-w-xl mx-auto md:mx-0 mb-10 leading-relaxed font-light drop-shadow-md">
-                    Встреча Нового года в санатории «Колос». Фирменный ужин, мистическая шоу-программа и отдых на природе вдали от городского шума.
-                </p>
-                <a href="#tariffs" class="fire-btn-outline inline-block px-8 py-3 md:px-10 md:py-4 rounded-sm font-normal text-base md:text-lg tracking-wide backdrop-blur-md">
-                    Выберите вариант размещения
-                </a>
+    <section class="section shows" id="screen-2">
+        <h2>New Year Magic: Spectacles</h2>
+        <div class="cards-grid">
+            <div class="glass-card">
+                <h3>Magic Lights</h3>
+                <p>Illusionist show details. Sleight of hand and fire elements.</p>
+                <button class="btn-outline">Details</button>
+            </div>
+            <div class="glass-card">
+                <h3>Bartender Show</h3>
+                <p>Spectacular cocktail making with juggling and artistry.</p>
+                <button class="btn-outline">Details</button>
             </div>
         </div>
     </section>
 
-    <!-- Программа -->
-    <section id="program" class="section-bg program-bg relative py-20 md:py-32 px-4 border-b border-gold/10 overflow-hidden">
-        <div class="overlay-gradient" style="background: linear-gradient(to bottom, rgba(10, 8, 7, 0.7), rgba(10, 8, 7, 0.95));"></div>
-
-        <div class="max-w-7xl mx-auto relative z-10">
-            <div class="text-center mb-16 md:mb-20">
-                <h2 class="font-heading text-3xl md:text-6xl mb-6 tracking-wide fire-text">Тайна новогодней ночи</h2>
-                <p class="text-silver/80 max-w-2xl mx-auto text-base md:text-lg leading-relaxed font-light">Забудьте о шумных клубах и пустяковых конкурсах. Мы создали атмосферу, где элегантность сочетается с природными стихиями.</p>
+    <section class="section booking" id="screen-3">
+        <div class="video-container">
+            <div class="video-player">
+                <button class="btn-primary">Play</button>
             </div>
-            
-            <div class="grid md:grid-cols-3 gap-12 md:gap-16">
-                <!-- Пункт 1: Шар -->
-                <div class="space-y-4 md:space-y-6 text-center md:text-left">
-                    <div class="h-16 w-16 mx-auto md:mx-0 flex items-center justify-center filter drop-shadow-[0_0_15px_rgba(255,140,0,0.6)] hover:scale-110 transition-transform">
-                        <svg viewBox="0 0 24 24" class="w-14 h-14"><use href="#icon-bauble"></use></svg>
-                    </div>
-                    <h3 class="font-heading text-2xl md:text-3xl text-silver tracking-wide">Шоу огненных барменов</h3>
-                    <p class="text-silver/60 leading-relaxed font-light text-sm md:text-base">Фирменные согревающие коктейли, виртуозная подача и мастерское владение огнем.</p>
-                </div>
-                <!-- Пункт 2: Колокольчик -->
-                <div class="space-y-4 md:space-y-6 text-center md:text-left">
-                    <div class="h-16 w-16 mx-auto md:mx-0 flex items-center justify-center filter drop-shadow-[0_0_15px_rgba(255,140,0,0.6)] hover:scale-110 transition-transform">
-                        <svg viewBox="0 0 24 24" class="w-12 h-12"><use href="#icon-bell"></use></svg>
-                    </div>
-                    <h3 class="font-heading text-2xl md:text-3xl text-silver tracking-wide">Живая музыка и вокал</h3>
-                    <p class="text-silver/60 leading-relaxed font-light text-sm md:text-base">Лаунж-зона, джазовые интерпретации новогодних хитов и изысканная музыка.</p>
-                </div>
-                <!-- Пункт 3: Звезда -->
-                <div class="space-y-4 md:space-y-6 text-center md:text-left">
-                    <div class="h-16 w-16 mx-auto md:mx-0 flex items-center justify-center filter drop-shadow-[0_0_15px_rgba(255,140,0,0.6)] hover:scale-110 transition-transform">
-                        <svg viewBox="0 0 24 24" class="w-14 h-14"><use href="#icon-star"></use></svg>
-                    </div>
-                    <h3 class="font-heading text-2xl md:text-3xl text-silver tracking-wide">Загадка леса</h3>
-                    <p class="text-silver/60 leading-relaxed font-light text-sm md:text-base">Ненавязчивая, захватывающая программа без лишнего взаимодействия.</p>
-                </div>
+            <div class="booking-text">
+                <h2>Hurry to Book</h2>
+                <p>Limited seats available. Do not delay the celebration!</p>
+                <button class="btn-primary">Get Consultation</button>
             </div>
         </div>
     </section>
 
-    <!-- Меню -->
-    <section id="menu" class="section-bg menu-bg relative py-20 md:py-32 px-4 overflow-hidden">
-        <div class="overlay-gradient" style="background: linear-gradient(to bottom, rgba(10, 8, 7, 0.7), rgba(10, 8, 7, 0.95));"></div>
-        
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-10 md:gap-16 relative z-10">
-            <div class="w-full md:w-1/2 p-2 bg-gradient-to-br from-[#FF8C00]/30 to-darker rounded-sm shadow-[0_0_40px_rgba(255,140,0,0.2)] relative">
-                <div class="absolute -inset-2 border border-[#FF8C00]/20 rounded-sm"></div>
-                <img src="food.jpg.jpg" alt="Блюдо от шефа" class="w-full h-auto object-cover rounded-sm hover:scale-105 transition-transform duration-1000 relative z-10">
+    <section class="section details" id="screen-4">
+        <h2>Holiday Atmosphere and Culinary Masterpieces</h2>
+        <div class="cards-grid">
+            <div class="glass-card">
+                <h3>Animation Program</h3>
+                <p>Interactive activities, energetic dances, and holiday magic.</p>
             </div>
-            
-            <div class="w-full md:w-1/2 space-y-6 md:space-y-8 text-center md:text-left">
-                <h2 class="font-heading text-3xl md:text-6xl tracking-wide fire-text">Вкус, соответствующий моменту</h2>
-                <p class="text-silver/80 text-base md:text-lg leading-relaxed font-light">
-                    Наш шеф-повар разработал эксклюзивное меню, в котором классические новогодние традиции сочетаются с сибирскими вкусами и эффектной подачей.
-                </p>
-                <div class="border-l border-[#FF8C00] pl-6 md:pl-8 my-8 md:my-10 relative mx-auto md:mx-0 max-w-sm md:max-w-none text-left">
-                    <div class="absolute -left-[1px] top-0 h-1/2 w-[2px] bg-[#FFD700] shadow-[0_0_10px_#FF8C00]"></div>
-                    <p class="text-xl md:text-2xl font-heading text-silver tracking-wide mb-2">Медальоны из фермерской говядины</p>
-                    <p class="text-silver/50 font-light text-sm md:text-base">с соусом из лесных ягод и фламбе.</p>
-                </div>
-                <button class="fire-btn-outline px-6 py-3 md:px-8 md:py-3 rounded-sm tracking-wide text-sm backdrop-blur-sm">
-                    Просмотреть полное меню
-                </button>
+            <div class="glass-card">
+                <h3>Chef Menu</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li>1. Festive Starter</li>
+                    <li>2. Exquisite Hot Dish</li>
+                    <li>3. Traditional Delicacies</li>
+                    <li>4. Signature Dessert</li>
+                </ul>
+                <button class="btn-outline">Download Menu</button>
             </div>
         </div>
     </section>
 
-    <!-- Тарифы -->
-    <section id="tariffs" class="section-bg tariffs-bg relative py-20 md:py-32 px-4 overflow-hidden">
-        <div class="overlay-gradient" style="background: linear-gradient(to bottom, rgba(10, 8, 7, 0.7), rgba(10, 8, 7, 0.95));"></div>
-
-        <div class="max-w-7xl mx-auto relative z-10">
-            <h2 class="font-heading text-3xl md:text-6xl text-center mb-16 md:mb-20 tracking-wide fire-text">Выберите свой сценарий</h2>
-            
-            <div class="grid md:grid-cols-3 gap-8 items-center">
-                <div class="bg-darker/80 backdrop-blur-md border border-gold/20 p-8 md:p-10 rounded-sm text-center space-y-6 md:space-y-8 hover:border-[#FF8C00]/50 transition-colors shadow-xl relative overflow-hidden">
-                    <h3 class="font-heading text-2xl md:text-3xl text-silver tracking-wide">Праздничный ужин</h3>
-                    <div class="w-12 h-px bg-gold/30 mx-auto"></div>
-                    <ul class="text-silver/60 space-y-3 md:space-y-4 font-light text-sm">
-                        <li>Приветственный прием и банкет</li>
-                        <li>Шоу-программа</li>
-                    </ul>
-                    <div class="text-xl md:text-2xl text-gold font-normal mt-6 md:mt-8">от 12 000 ₽ <span class="text-xs font-light text-silver/40 uppercase tracking-widest">/ чел</span></div>
-                    <button class="fire-btn-outline w-full py-3 rounded-sm tracking-wide text-sm">Обсудить</button>
-                </div>
-
-                <div class="bg-darker/95 backdrop-blur-xl border border-[#FF8C00] p-10 md:p-12 rounded-sm text-center space-y-6 md:space-y-8 transform md:-translate-y-4 shadow-[0_0_50px_rgba(255,140,0,0.2)] relative">
-                    <div class="text-[#FFD700] text-xs font-bold tracking-[0.2em] uppercase mb-4 text-shadow-[0_0_8px_rgba(255,140,0,0.8)]">Бестселлер</div>
-                    <h3 class="font-heading text-3xl md:text-4xl text-silver tracking-wide">Зимняя сказка</h3>
-                    <div class="w-12 h-px bg-[#FF8C00]/50 mx-auto"></div>
-                    <ul class="text-silver/70 space-y-3 md:space-y-4 font-light text-sm md:text-base">
-                        <li>Программа банкета и шоу</li>
-                        <li>Номер комфорт (2 ночи)</li>
-                        <li>Бранч 1 января</li>
-                    </ul>
-                    <div class="text-2xl md:text-3xl text-[#FFD700] font-normal mt-6 md:mt-8">от 35 000 ₽ <span class="text-xs font-light text-silver/40 uppercase tracking-widest">/ 2 чел</span></div>
-                    <button class="fire-btn w-full py-4 rounded-sm font-medium tracking-wide text-sm">Получить консультацию</button>
-                </div>
-
-                <div class="bg-darker/80 backdrop-blur-md border border-gold/20 p-8 md:p-10 rounded-sm text-center space-y-6 md:space-y-8 hover:border-[#FF8C00]/50 transition-colors shadow-xl">
-                    <h3 class="font-heading text-2xl md:text-3xl text-silver tracking-wide">Резиденция</h3>
-                    <div class="w-12 h-px bg-gold/30 mx-auto"></div>
-                    <ul class="text-silver/60 space-y-3 md:space-y-4 font-light text-sm">
-                        <li>Места премиум-класса</li>
-                        <li>Отдельный коттедж (2 ночи)</li>
-                        <li>Доступ в спа-салон</li>
-                    </ul>
-                    <div class="text-xl md:text-2xl text-gold font-normal mt-6 md:mt-8">от 65 000 ₽ <span class="text-xs font-light text-silver/40 uppercase tracking-widest">/ 2 чел</span></div>
-                    <button class="fire-btn-outline w-full py-3 rounded-sm tracking-wide text-sm">Забронировать</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Контакты -->
-    <section id="contact" class="section-bg contact-bg relative py-20 md:py-24 px-4 border-t border-gold/10 overflow-hidden">
-        <div class="overlay-gradient" style="background: linear-gradient(to bottom, rgba(10, 8, 7, 0.7), rgba(10, 8, 7, 0.95));"></div>
-        
-        <div class="max-w-3xl mx-auto text-center space-y-8 md:space-y-10 relative z-10">
-            <h2 class="font-heading text-3xl md:text-5xl tracking-wide fire-text">Хотите узнать подробности?</h2>
-            <p class="text-silver/70 font-light text-base md:text-lg">Оставьте номер телефона, и мы вышлем подробное расписание вечеринки, винную карту и схему рассадки.</p>
-            <form class="flex flex-col md:flex-row gap-4 justify-center max-w-xl mx-auto mt-6 md:mt-8">
-                <input type="tel" placeholder="Ваш WhatsApp" class="px-6 py-4 bg-darker/80 border border-[#FF8C00]/40 rounded-sm text-silver focus:outline-none focus:border-[#FFD700] focus:shadow-[0_0_15px_rgba(255,140,0,0.5)] w-full md:w-2/3 font-light backdrop-blur-sm shadow-inner transition-all">
-                <button type="submit" class="fire-btn px-8 py-4 rounded-sm font-medium tracking-wide text-sm md:w-1/3">Получить программу</button>
-            </form>
-        </div>
-    </section>
-
-    <!-- Подвал -->
-    <footer class="py-8 md:py-10 text-center bg-darker/95 backdrop-blur-lg border-t border-gold/10 text-silver/40 text-xs font-light tracking-widest uppercase relative z-10">
-        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
-            
-            <img src="image_e49975.jpg" alt="Санаторий Колос" class="h-10 object-contain" style="mix-blend-mode: screen;">
-            
-            <p class="text-center md:text-left">В 50 км от города, в самом сердце березового леса.</p>
-            <a href="#" class="hover:text-silver transition border-b border-transparent hover:border-silver pb-1">Политика конфиденциальности</a>
+    <footer class="footer">
+        <div class="logo">Kolos</div>
+        <button class="btn-primary">Get Consultation</button>
+        <div class="contact">
+            <p>+7 (3812) 97-20-20</p>
+            <p>kolos-omsk.ru</p>
         </div>
     </footer>
 
